@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user id="0" login="l0" password="p0" admin="true" />
+    <user id="1" login="l1" password="p1" admin="true" />
+    <user id="2" login="l2" password="p2" admin="false" />
+</users>
