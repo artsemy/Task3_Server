@@ -28,17 +28,20 @@ public class StudentList {
         this.students = students;
     }
 
-    public void addStudent(Student student){
+    public void addStudent(String name, int course){
+        Student student = new Student();
+        student.setName(name);
+        student.setCourse(course);
         student.setId(students.size());
         students.add(student);
         write();
     }
 
-    public boolean changeStudent(int id, Student s2){
+    public boolean changeStudent(int id, String newName, int newCourse){
+        Student s2 = new Student(newName, newCourse, id);
         if (id > students.size() || id < 0){
             return false;
         } else {
-            s2.setId(id);
             students.set(id, s2);
             return true;
         }
@@ -100,6 +103,5 @@ public class StudentList {
         } catch (FileNotFoundException | TransformerException e) {
             e.printStackTrace();
         }
-
     }
 }
