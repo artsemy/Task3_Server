@@ -8,5 +8,6 @@ public class Main {
         Menu menu = new Menu(server.getIn(), server.getOut());
         menu.run();
         server.stop();
+        
     }
 }
