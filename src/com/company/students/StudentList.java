@@ -39,16 +39,17 @@ public class StudentList {
 
     public boolean changeStudent(int id, String newName, int newCourse){
         Student s2 = new Student(newName, newCourse, id);
-        if (id > students.size() || id < 0){
+        if (id > students.size() - 1 || id < 0){
             return false;
         } else {
             students.set(id, s2);
+            write();
             return true;
         }
     }
 
     public String getStudent(int id){
-        if (id > students.size() || id < 0){
+        if (id > students.size() - 1 || id < 0){
             return "bad id";
         } else {
             return students.get(id).toString();

@@ -35,20 +35,19 @@ public class Menu {
         String login = "noLogin";
         String pass = "1";
         while (!log){
-            out.write("insert login: ");
+            out.write("insert login:\n");
             out.flush();
             login = in.readLine();
-            out.write("insert password");
+            out.write("insert password:\n");
             out.flush();
             pass = in.readLine();
             log = userList.login(login, pass);
         }
-        out.write("logged in");
-        out.flush();
     }
 
     private void work() throws IOException {
-        out.write(commands());
+        String c = commands();
+        out.write(c);
         out.flush();
         String command = in.readLine();
         while (!command.equals("exit")){
@@ -67,7 +66,7 @@ public class Menu {
                     addProfile();
                     break;
                 default:
-                    out.write("bad command");
+                    out.write("bad command\n");
                     out.flush();
             }
             command = in.readLine();
@@ -75,50 +74,57 @@ public class Menu {
     }
 
     private String commands(){
-        return "write 'commands' - to see commands\n" +
-                "write 'read' - to read profile\n" +
-                "write 'change' to change profile\n" +
-                "write 'add' to add profile\n" +
-                "write 'exit' - to exit\n";
+        return "write 'commands' - to see commands | " +
+                "write 'read' - to read profile | " +
+                "write 'change' to change profile | " +
+                "write 'add' to add profile | " +
+                "write 'exit' - to exit \n";
     }
 
     private void readProfile() throws IOException {
-        out.write("insert id");
+        out.write("insert id\n");
         out.flush();
         int id = Integer.parseInt(in.readLine());
-        out.write(studentList.getStudent(id));
+        out.write(studentList.getStudent(id) + "\n");
         out.flush();
     }
 
     private void changeProfile() throws IOException {
         if (userList.isAdmin()){
-            out.write("insert student id to change");
+            boolean b = false;
+            while (!b) {
+                out.write("insert student id to change\n");
+                out.flush();
+                int id = Integer.parseInt(in.readLine());
+                out.write("insert new name\n");
+                out.flush();
+                String name = in.readLine();
+                out.write("insert new course\n");
+                out.flush();
+                int course = Integer.parseInt(in.readLine());
+                b = studentList.changeStudent(id, name, course);
+            }
+            out.write("changed\n");
             out.flush();
-            int id = Integer.parseInt(in.readLine());
-            out.write("insert new name");
-            out.flush();
-            String name = in.readLine();
-            out.write("insert new course");
-            out.flush();
-            int course = Integer.parseInt(in.readLine());
-            studentList.changeStudent(id, name, course);
         } else {
-            out.write("only admin can use this command");
+            out.write("only admin can use this command\n");
             out.flush();
         }
     }
 
     private void addProfile() throws IOException {
         if (userList.isAdmin()){
-            out.write("insert name");
+            out.write("insert name\n");
             out.flush();
             String name = in.readLine();
-            out.write("insert course");
+            out.write("insert course\n");
             out.flush();
             int course = Integer.parseInt(in.readLine());
             studentList.addStudent(name, course);
+            out.write("added\n");
+            out.flush();
         } else {
-            out.write("only admin can use this command");
+            out.write("only admin can use this command\n");
             out.flush();
         }
     }

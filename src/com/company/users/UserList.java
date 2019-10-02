@@ -52,7 +52,7 @@ public class UserList {
         }
         NodeList elemList = null;
         if (document != null) {
-            elemList = document.getDocumentElement().getElementsByTagName("student");
+            elemList = document.getDocumentElement().getElementsByTagName("user");
             for (int i = 0; i < elemList.getLength(); i++) {
                 Node elem = elemList.item(i);
                 NamedNodeMap nodeMap = elem.getAttributes();

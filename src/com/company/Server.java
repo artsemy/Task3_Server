@@ -22,8 +22,8 @@ public class Server {
     public void run(){
         try {
             server = new ServerSocket(4004);
-            System.out.println("Сервер запущен!");
             clientSocket = server.accept();
+            System.out.println("Server start");
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
         } catch (IOException e) {
@@ -36,7 +36,7 @@ public class Server {
             clientSocket.close();
             in.close();
             out.close();
-            System.out.println("Сервер закрыт!");
+            System.out.println("Server closed");
             server.close();
         } catch (IOException e) {
             e.printStackTrace();
