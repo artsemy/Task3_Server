@@ -7,6 +7,7 @@ public class User {
     private String password;
     private boolean isAdmin;
 
+    //constructor
     public User() {
         id = -1;
         login = "noLogin";
@@ -14,6 +15,7 @@ public class User {
         isAdmin = false;
     }
 
+    //constructor
     public User(int id, String login, String password, boolean isAdmin) {
         this.id = id;
         this.login = login;
@@ -21,34 +23,32 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    //get method
     public String getLogin() {
         return login;
     }
 
+    //set method
     public void setLogin(String login) {
         this.login = login;
     }
 
+    //get method
     public String getPassword() {
         return password;
     }
 
+    //set method
     public void setPassword(String password) {
         this.password = password;
     }
 
+    //get method
     public boolean isAdmin() {
         return isAdmin;
     }
 
+    //set method
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }

@@ -11,14 +11,17 @@ public class Server {
     private BufferedReader in;
     private BufferedWriter out;
 
+    //get input
     public BufferedReader getIn() {
         return in;
     }
 
+    //get output
     public BufferedWriter getOut() {
         return out;
     }
 
+    //start server
     public void run(){
         try {
             server = new ServerSocket(4004);
@@ -31,6 +34,7 @@ public class Server {
         }
     }
 
+    //stop server
     public void stop(){
         try {
             clientSocket.close();

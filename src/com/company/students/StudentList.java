@@ -19,15 +19,13 @@ public class StudentList {
 
     private ArrayList<Student> students;
 
+    //constructor
     public StudentList() {
         students = new ArrayList<Student>();
         read();
     }
 
-    public StudentList(ArrayList<Student> students) {
-        this.students = students;
-    }
-
+    //add student
     public void addStudent(String name, int course){
         Student student = new Student();
         student.setName(name);
@@ -37,6 +35,7 @@ public class StudentList {
         write();
     }
 
+    //change student
     public boolean changeStudent(int id, String newName, int newCourse){
         Student s2 = new Student(newName, newCourse, id);
         if (id > students.size() - 1 || id < 0){
@@ -48,6 +47,7 @@ public class StudentList {
         }
     }
 
+    //get student by id
     public String getStudent(int id){
         if (id > students.size() - 1 || id < 0){
             return "bad id";
@@ -56,6 +56,7 @@ public class StudentList {
         }
     }
 
+    //read info from file
     private void read(){
         Document document = null;
         try {
@@ -79,6 +80,7 @@ public class StudentList {
         }
     }
 
+    //write info to file
     private void write(){
         Document document = null;
         try {
@@ -105,4 +107,5 @@ public class StudentList {
             e.printStackTrace();
         }
     }
+
 }

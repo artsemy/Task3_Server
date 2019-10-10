@@ -18,15 +18,13 @@ public class UserList {
     private ArrayList<User> users;
     private User user;
 
+    //constructor
     public UserList() {
         users = new ArrayList<User>();
         read();
     }
 
-    public UserList(ArrayList<User> users) {
-        this.users = users;
-    }
-
+    //login
     public boolean login(String name, String password){
         for (User u: users) {
             if (u.getLogin().equals(name) && u.getPassword().equals(password)){
@@ -37,10 +35,12 @@ public class UserList {
         return false;
     }
 
+    //get admin
     public boolean isAdmin(){
         return user.isAdmin();
     }
 
+    //read from file
     private void read(){
         Document document = null;
         try {

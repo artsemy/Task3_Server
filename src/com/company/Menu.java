@@ -14,6 +14,7 @@ public class Menu {
     private BufferedReader in;
     private BufferedWriter out;
 
+    //init menu
     public Menu(BufferedReader in, BufferedWriter out) {
         studentList = new StudentList();
         userList = new UserList();
@@ -21,6 +22,7 @@ public class Menu {
         this.out = out;
     }
 
+    //start menu
     public void run(){
         try {
             login();
@@ -30,6 +32,7 @@ public class Menu {
         }
     }
 
+    //login
     private void login() throws IOException {
         boolean log = false;
         String login = "noLogin";
@@ -45,6 +48,7 @@ public class Menu {
         }
     }
 
+    //main menu
     private void work() throws IOException {
         String c = commands();
         out.write(c);
@@ -73,6 +77,7 @@ public class Menu {
         }
     }
 
+    //main menu commands
     private String commands(){
         return "write 'commands' - to see commands | " +
                 "write 'read' - to read profile | " +
@@ -81,6 +86,7 @@ public class Menu {
                 "write 'exit' - to exit \n";
     }
 
+    //read profile by id
     private void readProfile() throws IOException {
         out.write("insert id\n");
         out.flush();
@@ -89,6 +95,7 @@ public class Menu {
         out.flush();
     }
 
+    //change profile by id
     private void changeProfile() throws IOException {
         if (userList.isAdmin()){
             boolean b = false;
@@ -102,6 +109,7 @@ public class Menu {
                 out.write("insert new course\n");
                 out.flush();
                 int course = Integer.parseInt(in.readLine());
+                //change profile
                 b = studentList.changeStudent(id, name, course);
             }
             out.write("changed\n");
@@ -112,6 +120,7 @@ public class Menu {
         }
     }
 
+    //add profile
     private void addProfile() throws IOException {
         if (userList.isAdmin()){
             out.write("insert name\n");
@@ -120,6 +129,7 @@ public class Menu {
             out.write("insert course\n");
             out.flush();
             int course = Integer.parseInt(in.readLine());
+            //add student profile
             studentList.addStudent(name, course);
             out.write("added\n");
             out.flush();
